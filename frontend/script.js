@@ -55,7 +55,7 @@ editSubmit.addEventListener('click', (e) => {
 })
 
 submit.addEventListener('click', (e) => {
-  //
+  // submits the post request to create a new gif
   const name = document.getElementById('name').value
   const url = document.getElementById('url').value
 
