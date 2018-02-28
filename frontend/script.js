@@ -8,7 +8,7 @@ let currentlyEditing = ''
 
 function editModal (gif) {
   // Sets the edit modal to have the data from the gif clicked on
-  document.body.querySelector('#modal-edit').modal('open')
+  $('#modal-edit').modal('open')
   const nameEdit = document.getElementById('name-edit')
   const urlEdit = document.getElementById('url-edit')
 
@@ -50,7 +50,7 @@ editSubmit.addEventListener('click', (e) => {
   }).then((resp) => {
     console.log(resp)
     addPictures(resp.data)
-    document.body.querySelector('#modal-edit').modal('close')
+    $('#modal-edit').modal('close')
   })
 })
 
@@ -64,7 +64,7 @@ submit.addEventListener('click', (e) => {
     url
   }).then((resp) => {
     addPictures(resp.data)
-    document.body.querySelector('#modal-create').modal('close')
+    $('#modal-create').modal('close')
   })
 })
 
@@ -72,11 +72,9 @@ deleteButton.addEventListener('click', (e) => {
   // deletes an image
   axios.delete(`http://localhost:3000/gifs/${currentlyEditing}`).then((resp) => {
     addPictures(resp.data)
-    document.body.querySelector('#modal-edit').modal('close')
+    $('#modal-edit').modal('close')
   })
 })
 
 // initializes modal package
-document.body.querySelector('.modal').forEach(element => 
-  element.modal()
-)
+$('.modal').modal()
