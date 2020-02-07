@@ -3,19 +3,27 @@ const Gif = require("../models/Gif");
 
 const router = express.Router();
 
-//return one gif
-router.get("/:id", (req, res) => {});
-
 //return all gifs
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+	Gif.find({}).then(gifs => {
+		res.json(gifs);
+	});
+});
 
-//update one gif and reditect to /
-router.put("/:id", (req, res) => {});
+//update one gif
+router.put("/:id", (req, res) => {
+	console.log(req.body);
+	Gif.findByIdAndUpdate(req.params.id, req.body).then(() => {});
+});
 
-//add one gif and redirect to /
-router.post("/", (req, res) => {});
+//add one gif
+router.post("/", (req, res) => {
+	Gif.create(req.body);
+});
 
-//delete one gif and redirect to /
-router.delete("/:id", (req, res) => {});
+//delete one gif
+router.delete("/:id", (req, res) => {
+	Gif.findOneAndRemove({ _id: req.params.id }).then(() => {});
+});
 
 module.exports = router;
